@@ -7,6 +7,7 @@ import {
 } from "react-router-dom"
 import './index.css'
 import Calama from './components/Calama.jsx'
+import Ejercicio01 from './components/ejercicios/Ejercicio01.jsx'
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
   {
     path: "/ciudad",
     element: <Calama />
+  },
+  {
+    path : "/Ejercicio01",
+    element: <Ejercicio01/>
   }
 ])
 
