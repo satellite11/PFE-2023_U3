@@ -24,6 +24,19 @@ const Ejercicio01 = () => {
             <input type="number" name="neto" id="neto" value={valorNeto} onChange={handleValorNeto}/>
 
             <button type="button" onClick={handleCalcular}>Calcular</button>
+
+            <br />
+            {valorNeto === 0 &&
+                <small>Ingrese el valor neto para calcular total</small>
+            }
+            <br />
+
+            {valorTotal !== 0 && 
+                <div>
+                    <h2>Resultado</h2>
+                    <p>Valor total: {valorTotal}</p>
+                </div>
+            }
         </>
     )
 }
