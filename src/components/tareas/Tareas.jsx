@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import 'bootstrap/dist/css/bootstrap.min.css'
 
 const listaEjemplo = [
     {
@@ -38,6 +37,13 @@ const Tareas = () => {
             setNombreTarea('')
         }
     }
+
+    const handleEliminarTarea = (id) => {
+        let tareasFiltradas = tareas.filter(tarea => {
+            return tarea.id !== id
+        })
+        setTareas(tareasFiltradas)
+    }
     
     return (
         <>
@@ -58,9 +64,13 @@ const Tareas = () => {
                         {
                             tareas.map(function(tarea) {
                                 return (
-                                    <li className="list-group-item" key={tarea.id}>{tarea.nombre}</li>
-                                )
-                                })
+                                    <li 
+                                    className="list-group-item" key={tarea.id}>{tarea.nombre}
+                                    <button type='button' className='btn btn-outline-danger btn-sm ms-1'
+                                    onClick={() => handleEliminarTarea(tarea.id)}>Eliminar</button>
+                                    </li>
+                                );
+                            })
                         }
                     </ul>
                 </div>
