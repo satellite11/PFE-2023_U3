@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import AgregarTareaFragment from './fragments/AgregarTareaFragment'
+import MostrarTareasFragment from './fragments/mostrarTareasFragment'
 
 const listaEjemplo = [
     {
@@ -51,29 +53,20 @@ const Tareas = () => {
                 <div className='col-12'>
                     <h1>TAREAS</h1>
                 </div>
-                <div className='col-12'>
-                    <label htmlFor="nombre-tarea">Añadir nueva tarea</label>
-                    <input type="text" onChange={handleModificarTarea} className='form-control my-2' id="nombre-tarea" value={nombreTarea}/>
-                    <button type='submit' onClick={handleBotonAgregarTarea} className='btn btn-primary'>Añadir</button>
-                </div>
+
+                <AgregarTareaFragment 
+                nombreTarea={nombreTarea}
+                handleModificarTarea={handleModificarTarea}
+                handleBotonAgregarTarea={handleBotonAgregarTarea} />
+
                 <div className="col-12 mt-4">
                     <h2>Lista de tareas</h2>
                 </div>
-                <div className="col-12">
-                    <ul className="list-group">
-                        {
-                            tareas.map(function(tarea) {
-                                return (
-                                    <li 
-                                    className="list-group-item" key={tarea.id}>{tarea.nombre}
-                                    <button type='button' className='btn btn-outline-danger btn-sm ms-1'
-                                    onClick={() => handleEliminarTarea(tarea.id)}>Eliminar</button>
-                                    </li>
-                                );
-                            })
-                        }
-                    </ul>
-                </div>
+
+                <MostrarTareasFragment
+                tareas={tareas}
+                handleEliminarTarea={handleEliminarTarea} />
+
             </div>
         </>
     )
